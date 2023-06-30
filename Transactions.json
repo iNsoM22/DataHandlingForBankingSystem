@@ -1,0 +1,13 @@
+{
+    "Transactions": [
+        {
+            "SenderAccountID": "857125840",
+            "SenderUsername": "asta",
+            "OperationType": "Withdraw",
+            "Amount": 200,
+            "ReceiverAccountID": null,
+            "ReceiverUsername": null,
+            "Date": "30-6-2023"
+        }
+    ]
+}
