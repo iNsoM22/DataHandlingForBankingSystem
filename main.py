@@ -37,7 +37,6 @@ class SplashScreen(QMainWindow):
         self.timer_1 = QTimer()
         self.timer_1.setInterval(30)
         self.timer_1.start()
-        
         self.splash_screen.AppLoadingBar.setValue(self.count)
         self.timer_1.timeout.connect(self.counter)
         
@@ -160,7 +159,6 @@ class SignIN(QMainWindow):
         self.sign_in.username_field.clear()
         self.sign_in.password_field.clear()
         self.stacked_widget.setCurrentIndex(1)
-        # widget.setCurrentIndex(widget.currentIndex() + 1)
 
 
     def dashboard(self, username, account_type):
@@ -176,7 +174,6 @@ class SignIN(QMainWindow):
         self.stacked_widget.setCurrentIndex(x)
         self.sign_in.username_field.clear()
         self.sign_in.password_field.clear()
-        # x = widget.addWidget(userboard)
 
 
     def adminboard(self):
@@ -226,35 +223,35 @@ class SignUP(QWidget):
         data = self.data_check.isAnExistingUser(username, account_type[0])
                    
         if data:
-            print("Username Already Exist.")
+            SignIN.messageboxInfo("Username Already Exist.")
     
         else:
-            self.initial_money = InitialDeposit()
-            self.initial_money.full_name = fullname
-            self.initial_money.username = username
-            self.initial_money.email = email
-            self.initial_money.phone = phone
-            self.initial_money.password = password
-            self.initial_money.account_type = account_type
+            self.initial_money = InitialDeposit(account_type, fullname, username, email, password, phone)
+            self.clearData()
             self.initial_money.show()
             
-            
+    def clearData(self):
+        self.sign_up.fullname_field.clear()
+        self.sign_up.email_field.clear()
+        self.sign_up.username_field.clear()
+        self.sign_up.password_field.clear()
+        self.sign_up.phone_field.clear()
+        self.sign_up.account_type_comboBox.clear()
+    
     def backLogin(self):
+        self.clearData()
         self.stacked_widget.setCurrentIndex(0)
-        # self.login = SignIN()
-        # self.login.show()
         
 
 class InitialDeposit(QWidget):
-    def __init__(self):
+    def __init__(self, account, full_name, username, email, password, phone):
         QWidget.__init__(self)
-        self._account_type = None
-        self.full_name = None
-        self.username = None
-        self.email = None
-        self.password = None
-        self.phone =  None
-        self.account_type = None
+        self._account_type = account
+        self.full_name = full_name
+        self.username = username
+        self.email = email
+        self.password = password
+        self.phone =  phone
         self.initial_deposit = Ui_InitialMoney()
         self.initial_deposit.setupUi(self)
         self.initial_deposit.create_account_btn.clicked.connect(self.accountCreation)
@@ -677,9 +674,9 @@ class BankApplication(QMainWindow):
         self.widget.addWidget(self.admin_board)
         self.setMinimumSize(1000,680)
         self.setMaximumSize(1000,680)
+        
         self.setStyleSheet("background-color: qlineargradient(spread:reflect, x1:0.392, y1:0.836, x2:1, y2:0, stop:0 rgba(151,150,240, 255), stop:1 rgba(251, 199, 212, 255));")
         self.setWindowFlag(Qt.FramelessWindowHint)
-
         
         self.setWindowTitle("Banking System")
         self.show()
@@ -688,7 +685,6 @@ class BankApplication(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = SplashScreen()
-    # window.show()
     sys.exit(app.exec())
 
    

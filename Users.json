@@ -21,6 +21,15 @@
             "Phone": "12345",
             "AccountID": "57830229",
             "Balance": 1272.0
+        },
+        {
+            "Name": "moiz",
+            "Username": "moiz123",
+            "Password": "12345",
+            "Email": "moiz123@gmail.com",
+            "Phone": "12345",
+            "AccountID": "93343201",
+            "Balance": 323.6
         }
     ],
     "CheckingAccountUsers": [
@@ -31,9 +40,9 @@
             "Email": "asta@gmail.com",
             "Phone": "12345",
             "AccountID": "87934787",
-            "Balance": 78.0,
+            "Balance": 17.0,
             "CreditAmountSpend": 0,
-            "RepaymentDeadline": "2023-10-03"
+            "RepaymentDeadline": "2024-04-16"
         }
     ]
 }
